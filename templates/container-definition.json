@@ -1,0 +1,22 @@
+{
+  "name": "${CONTAINER_NAME}",
+  "image": "${IMAGE_URL}:${IMAGE_VERSION}",
+  "memory": ${MEMORY},
+  "cpu": ${CPU},
+  "essential": ${ESSENTIAL},
+  "portMappings": [
+   {
+     "containerPort": ${CONTAINER_PORT},
+     "hostPort": ${CONTAINER_PORT}
+   }
+  ],
+  "environment": ${ENV_VARS},
+  "logConfiguration": {
+    "logDriver": "awslogs",
+    "options": {
+      "awslogs-group": "/ecs/${CLUSTER_NAME}",
+      "awslogs-region": "${AWS_REGION}",
+      "awslogs-stream-prefix": "ecs"
+    }
+  }
+}
