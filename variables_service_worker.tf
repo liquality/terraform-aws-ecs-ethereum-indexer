@@ -19,6 +19,12 @@ variable "worker_instance_count" {
   default     = 1 # NOTE: Can only support a single instance for now !!!
 }
 
+variable "worker_image_registry_url" {
+  type        = string
+  description = "The full registry path to the Docker image including the image name."
+  default     = "ghcr.io/liquality/ethereum-indexer-worker"
+}
+
 # ------------------------------------------------------------------------------
 # Container settings
 # ------------------------------------------------------------------------------

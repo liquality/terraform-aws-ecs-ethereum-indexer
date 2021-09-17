@@ -7,7 +7,7 @@ locals {
   # api_def = templatefile("${path.module}/templates/container-definition.json", {
   #   CONTAINER_NAME = var.api_container_name
   #   ESSENTIAL      = var.api_is_essential
-  #   IMAGE_URL      = aws_ecr_repository.api.repository_url
+  #   IMAGE_URL      = var.api_image_registry_url
   #   IMAGE_VERSION  = var.api_image_version
   #   CONTAINER_PORT = var.api_container_port
   #   MEMORY         = var.api_container_memory_alloc
@@ -25,7 +25,7 @@ locals {
   api_def = templatefile("${path.module}/templates/container-definition.json", {
     CONTAINER_NAME = var.api_container_name
     ESSENTIAL      = var.api_is_essential
-    IMAGE_URL      = aws_ecr_repository.api.repository_url
+    IMAGE_URL      = var.api_image_registry_url
     IMAGE_VERSION  = var.api_image_version
     CONTAINER_PORT = var.api_container_port
     MEMORY         = var.api_container_memory_alloc

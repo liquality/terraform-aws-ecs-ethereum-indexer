@@ -19,10 +19,16 @@ variable "api_instance_count" {
   default     = 2
 }
 
+variable "api_image_registry_url" {
+  type        = string
+  description = "The full registry path to the Docker image including the image name."
+  default     = "ghcr.io/liquality/ethereum-indexer-api"
+}
+
 # ------------------------------------------------------------------------------
 # Container settings
 # ------------------------------------------------------------------------------
-# TODO: Should we name this api_task_name ???
+# TODO: Perhaps rename this to api_task_name ???
 variable "api_container_name" {
   type        = string
   description = "The name to attach to the running container."
