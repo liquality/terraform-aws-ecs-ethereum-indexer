@@ -20,7 +20,8 @@ Terraform module for Liquality's Ethereum-based chain indexer services (AWS ECS)
 
 ```
 module "indexer-ropsten" {
-  source = "https://github.com/liquality/terraform-aws-ecs-ethereum-indexer.git?ref=dev"
+  source  = "app.terraform.io/liquality/ecs-ethereum-indexer/aws"
+  version = "0.0.1"
 
   # The target environment
   env_alias  = "chainhub"
