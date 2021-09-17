@@ -9,6 +9,7 @@ Terraform module for Liquality's Ethereum-based chain indexer services (AWS ECS)
 * [Inputs][section-inputs]
 * [Requirements][section-requirements]
 * [Providers][section-providers]
+* [License][section-license]
 
 
 ## Introduction
@@ -20,8 +21,7 @@ Terraform module for Liquality's Ethereum-based chain indexer services (AWS ECS)
 
 ```
 module "indexer-ropsten" {
-  source  = "app.terraform.io/liquality/ecs-ethereum-indexer/aws"
-  version = "0.0.1"
+  source = "git::https://github.com/liquality/terraform-aws-ecs-ethereum-indexer.git?ref=tags/v0.0.2"
 
   # The target environment
   env_alias  = "chainhub"
@@ -33,7 +33,7 @@ module "indexer-ropsten" {
   chain_network_endpoint = "https://ropsten.infura.io/v3/1a2345fff1234512345abcde12345ff"
 
   # Database settings
-  mongo_uri = "mongodb://myhost:27017/indexerRopsten"
+  mongo_uri = "mongodb://db-host:27017/indexerRopsten"
 
   # API settings
   api_image_version          = "latest"
@@ -68,9 +68,15 @@ module "indexer-ropsten" {
 | aws     | >= 3.38 |
 
 
+## License
+
+[TBC]
+
+
 
 [section-introduction]: #introduction
 [section-usage]: #usage
 [section-inputs]: #inputs
 [section-requirements]: #requirements
 [section-providers]: #providers
+[section-license]: #license
