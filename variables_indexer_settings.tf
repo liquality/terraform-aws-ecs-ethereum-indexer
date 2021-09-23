@@ -19,7 +19,26 @@ variable "chain_network_endpoint" {
 # ------------------------------------------------------------------------------
 # Data store
 # ------------------------------------------------------------------------------
-variable "mongo_uri" {
+# variable "mongo_uri" {
+#   type        = string
+#   description = "The connection uri for the MongoDB database."
+# }
+variable "mongo_db_name" {
   type        = string
-  description = "The connection uri for the MongoDB database."
+  description = "The name of the MongoDB database to use."
+}
+
+variable "mongo_db_host" {
+  type        = string
+  description = "The host for the MongoDB database."
+}
+
+variable "mongo_db_user" {
+  type        = string
+  description = "The user for the MongoDB database."
+}
+
+variable "mongo_db_password" {
+  type        = string
+  description = "The password for the MongoDB database."
 }

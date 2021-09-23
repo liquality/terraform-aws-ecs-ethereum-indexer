@@ -19,9 +19,11 @@ Terraform module for Liquality's Ethereum-based chain indexer services (AWS ECS)
 
 ## Usage
 
+Example of an ETH ropsten configuration:
+
 ```
 module "indexer-ropsten" {
-  source = "git::https://github.com/liquality/terraform-aws-ecs-ethereum-indexer.git?ref=tags/v0.0.2"
+  source = "github.com/liquality/terraform-aws-ecs-ethereum-indexer.git?ref=tags/v0.0.3"
 
   # The target environment
   env_alias  = "chainhub"
@@ -30,10 +32,13 @@ module "indexer-ropsten" {
   # Chain settings
   chain_id               = "eth"
   chain_network_name     = "ropsten"
-  chain_network_endpoint = "https://ropsten.infura.io/v3/1a2345fff1234512345abcde12345ff"
+  chain_network_endpoint = "https://ropsten.infura.io/v3/12345ffff12345fffff1234512345ff"
 
   # Database settings
-  mongo_uri = "mongodb://db-host:27017/indexerRopsten"
+  mongo_db_name     = "indexerEthRopsten"
+  mongo_db_host     = var.mongo_db_host     # loaded from secret
+  mongo_db_user     = var.mongo_db_user     # loaded from secret
+  mongo_db_password = var.mongo_db_password # loaded from secret
 
   # API settings
   api_image_version          = "latest"
