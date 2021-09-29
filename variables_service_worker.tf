@@ -4,13 +4,13 @@
 variable "worker_service_memory_alloc" {
   type        = number
   description = "The memory allocation for the entire service."
-  default     = 512
+  default     = 1025
 }
 
 variable "worker_service_cpu_alloc" {
   type        = number
   description = "The CPU allocation for the entire service."
-  default     = 256
+  default     = 512
 }
 
 variable "worker_instance_count" {
@@ -28,11 +28,10 @@ variable "worker_image_registry_url" {
 # ------------------------------------------------------------------------------
 # Container settings
 # ------------------------------------------------------------------------------
-# TODO: Should we name this worker_task_name ???
-variable "worker_container_name" {
+variable "worker_task_name" {
   type        = string
   description = "The name to attach to the running container."
-  default     = "ethereum-indexer-worker"
+  default     = "indexer-worker"
 }
 
 variable "worker_image_version" {
@@ -44,13 +43,13 @@ variable "worker_image_version" {
 variable "worker_container_memory_alloc" {
   type        = number
   description = "The memory allocation to designate for the container."
-  default     = 256
+  default     = 512
 }
 
 variable "worker_container_cpu_alloc" {
   type        = number
   description = "The CPU allocation to designate for the container."
-  default     = 128
+  default     = 256
 }
 
 variable "worker_is_essential" {

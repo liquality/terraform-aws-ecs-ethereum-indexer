@@ -11,7 +11,7 @@ resource "aws_ecs_service" "api" {
 
   load_balancer {
     target_group_arn = aws_lb_target_group.api.arn
-    container_name   = var.api_container_name
+    container_name   = local.api_task_name
     container_port   = var.api_container_port
   }
 
@@ -79,7 +79,7 @@ resource "aws_lb_listener" "api" {
 }
 
 resource "aws_lb_target_group" "api" {
-  name        = var.api_container_name
+  name        = local.api_task_name
   port        = var.api_container_port # NOTE: Apparently, this doesn't matter ?!?!?!
   protocol    = "HTTP"
   vpc_id      = data.terraform_remote_state.vpc.outputs.vpc_id

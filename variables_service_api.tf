@@ -28,11 +28,10 @@ variable "api_image_registry_url" {
 # ------------------------------------------------------------------------------
 # Container settings
 # ------------------------------------------------------------------------------
-# TODO: Perhaps rename this to api_task_name ???
-variable "api_container_name" {
+variable "api_task_name" {
   type        = string
   description = "The name to attach to the running container."
-  default     = "ethereum-indexer-api"
+  default     = "indexer-api"
 }
 
 variable "api_image_version" {
