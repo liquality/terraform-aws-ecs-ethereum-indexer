@@ -5,7 +5,7 @@
 locals {
   # Ethereum Indexer API
   api_def = templatefile("${path.module}/templates/container-definition-api.json", {
-    CONTAINER_NAME = var.api_container_name
+    CONTAINER_NAME = local.api_task_name
     ESSENTIAL      = var.api_is_essential
     IMAGE_URL      = var.api_image_registry_url
     IMAGE_VERSION  = var.api_image_version
@@ -25,7 +25,7 @@ locals {
 
   # Ethereum Indexer Worker
   worker_def = templatefile("${path.module}/templates/container-definition-worker.json", {
-    CONTAINER_NAME = var.worker_container_name
+    CONTAINER_NAME = local.worker_task_name
     ESSENTIAL      = var.worker_is_essential
     IMAGE_URL      = var.worker_image_registry_url
     IMAGE_VERSION  = var.worker_image_version
@@ -43,7 +43,7 @@ locals {
 
   # (Testing with Demo API)
   # api_def = templatefile("${path.module}/templates/container-definition-api.json", {
-  #   CONTAINER_NAME = var.api_container_name
+  #   CONTAINER_NAME = local.api_task_name
   #   ESSENTIAL      = var.api_is_essential
   #   IMAGE_URL      = var.api_image_registry_url
   #   IMAGE_VERSION  = var.api_image_version
