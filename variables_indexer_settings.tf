@@ -1,14 +1,9 @@
 # ------------------------------------------------------------------------------
 # Chain settings
 # ------------------------------------------------------------------------------
-variable "chain_id" {
-  type        = string
-  description = "The identifier for the ethereum-based chain (e.g eth, rsk, bsc)."
-}
-
 variable "chain_network_name" {
   type        = string
-  description = "The name of the chain network (e.g ropsten, rinkeby, mainnet)."
+  description = "A logical name for the chain network (e.g eth-ropsten, eth-rinkeby, rsk-mainnet)."
 }
 
 variable "chain_network_endpoint" {

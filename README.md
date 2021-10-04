@@ -1,6 +1,6 @@
 # terraform-aws-ecs-ethereum-indexer
 
-Terraform module for Liquality's Ethereum-based chain indexer services (AWS ECS).
+Terraform module for Liquality's EVM-based chain indexer services (AWS ECS).
 
 ## Table of Contents
 
@@ -19,7 +19,7 @@ Terraform module for Liquality's Ethereum-based chain indexer services (AWS ECS)
 
 ## Usage
 
-Example of an ETH ropsten configuration:
+Example of an ethereum ropsten configuration:
 
 ```
 module "indexer-ropsten" {
@@ -30,8 +30,7 @@ module "indexer-ropsten" {
   aws_region = "us-east-1"
 
   # Chain settings
-  chain_id               = "eth"
-  chain_network_name     = "ropsten"
+  chain_network_name     = "eth-ropsten"
   chain_network_endpoint = "https://ropsten.infura.io/v3/12345ffff12345fffff1234512345ff"
 
   # Database settings
