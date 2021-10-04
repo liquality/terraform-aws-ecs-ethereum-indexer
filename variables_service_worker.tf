@@ -4,7 +4,7 @@
 variable "worker_service_memory_alloc" {
   type        = number
   description = "The memory allocation for the entire service."
-  default     = 1025
+  default     = 1024
 }
 
 variable "worker_service_cpu_alloc" {
