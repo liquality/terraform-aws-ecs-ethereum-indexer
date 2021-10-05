@@ -9,6 +9,8 @@ resource "aws_ecs_service" "api" {
 
   desired_count = var.api_instance_count
 
+  health_check_grace_period_seconds = 120
+
   load_balancer {
     target_group_arn = aws_lb_target_group.api.arn
     container_name   = local.api_task_name
@@ -87,10 +89,16 @@ resource "aws_lb_target_group" "api" {
 
   depends_on = [aws_alb.api]
 
-  # health_check {
-  #   matcher = "200,301,302"
-  #   path    = "/"
-  # }
+  health_check {
+    enabled             = true
+    healthy_threshold   = 2
+    unhealthy_threshold = 2
+    interval            = 30 # seconds
+    timeout             = 10 # seconds
+    matcher             = "200"
+    path                = "/status?maxgap=20"
+    port                = var.api_container_port
+  }
 
   tags = local.tags
 }
