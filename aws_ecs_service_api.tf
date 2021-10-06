@@ -96,7 +96,7 @@ resource "aws_lb_target_group" "api" {
     interval            = 30 # seconds
     timeout             = 10 # seconds
     matcher             = "200"
-    path                = "/status?maxgap=20"
+    path                = "/status"
     port                = var.api_container_port
   }
 
