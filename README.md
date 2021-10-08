@@ -1,6 +1,6 @@
 # terraform-aws-ecs-ethereum-indexer
 
-Terraform module for Liquality's EVM-based chain indexer services (AWS ECS).
+Terraform module for Liquality's blockchain indexer services (AWS ECS).
 
 ## Table of Contents
 
@@ -19,22 +19,22 @@ Terraform module for Liquality's EVM-based chain indexer services (AWS ECS).
 
 ## Usage
 
-Example of an ethereum ropsten configuration:
+Example of an RSK testnet configuration:
 
 ```
-module "indexer-ropsten" {
-  source = "github.com/liquality/terraform-aws-ecs-ethereum-indexer.git?ref=tags/v0.0.3"
+module "indexer-rsk-testnet" {
+  source = "github.com/liquality/terraform-aws-ecs-ethereum-indexer.git?ref=tags/v0.0.4"
 
   # The target environment
   env_alias  = "chainhub"
   aws_region = "us-east-1"
 
   # Chain settings
-  chain_network_name     = "eth-ropsten"
-  chain_network_endpoint = "https://ropsten.infura.io/v3/12345ffff12345fffff1234512345ff"
+  chain_network_name     = "rsk-testnet"
+  chain_network_endpoint = "https://public-node.testnet.rsk.co"
 
   # Database settings
-  mongo_db_name     = "indexerEthRopsten"
+  mongo_db_name     = "indexerRskTestnet"
   mongo_db_host     = var.mongo_db_host     # loaded from secret
   mongo_db_user     = var.mongo_db_user     # loaded from secret
   mongo_db_password = var.mongo_db_password # loaded from secret
@@ -49,8 +49,8 @@ module "indexer-ropsten" {
   # Worker settings
   worker_image_version          = "latest"
   worker_environment_vars       = [{ name = "MAX_BLOCK_BATCH_SIZE", value = 10 }, { name = "MAX_TRANSACTION_BATCH_SIZE", value = 15 }]
-  worker_container_memory_alloc = 512
-  worker_container_cpu_alloc    = 256
+  worker_container_memory_alloc = 1024
+  worker_container_cpu_alloc    = 512
 }
 ```
 

@@ -8,7 +8,7 @@ variable "chain_network_name" {
 
 variable "chain_network_endpoint" {
   type        = string
-  description = "The web3 uri for the Ethereum blockchain network."
+  description = "The web3 uri for the blockchain network."
 }
 
 # ------------------------------------------------------------------------------

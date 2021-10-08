@@ -36,9 +36,11 @@ resource "aws_ecs_task_definition" "api" {
 
   requires_compatibilities = ["FARGATE"]
   network_mode             = "awsvpc"
-  memory                   = var.api_service_memory_alloc * var.api_instance_count
-  cpu                      = var.api_service_cpu_alloc * var.api_instance_count
   execution_role_arn       = aws_iam_role.ecsTaskExecutionRole.arn
+
+  # TODO - Should we set higher hard limits here ???
+  memory = var.api_service_memory_alloc * var.api_instance_count
+  cpu    = var.api_service_cpu_alloc * var.api_instance_count
 
   tags = local.tags
 

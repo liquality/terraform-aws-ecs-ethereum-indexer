@@ -29,9 +29,10 @@ resource "aws_ecs_task_definition" "worker" {
 
   requires_compatibilities = ["FARGATE"]
   network_mode             = "awsvpc"
-  memory                   = var.worker_service_memory_alloc * var.worker_instance_count
-  cpu                      = var.worker_service_cpu_alloc * var.worker_instance_count
   execution_role_arn       = aws_iam_role.ecsTaskExecutionRole.arn
+
+  memory = var.worker_service_memory_alloc * var.worker_instance_count
+  cpu = var.worker_service_cpu_alloc * var.worker_instance_count
 
   tags = local.tags
 
