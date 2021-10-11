@@ -38,7 +38,6 @@ resource "aws_ecs_task_definition" "api" {
   network_mode             = "awsvpc"
   execution_role_arn       = aws_iam_role.ecsTaskExecutionRole.arn
 
-  # TODO - Should we set higher hard limits here ???
   memory = var.api_service_memory_alloc * var.api_instance_count
   cpu    = var.api_service_cpu_alloc * var.api_instance_count
 
@@ -84,7 +83,7 @@ resource "aws_lb_listener" "api" {
 
 resource "aws_lb_target_group" "api" {
   name        = local.api_task_name
-  port        = var.api_container_port # NOTE: Apparently, this doesn't matter ?!?!?!
+  port        = var.api_container_port
   protocol    = "HTTP"
   vpc_id      = data.terraform_remote_state.vpc.outputs.vpc_id
   target_type = "ip"
