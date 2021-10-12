@@ -57,7 +57,7 @@ resource "aws_alb" "api" {
   subnets            = data.terraform_remote_state.vpc.outputs.public_subnets
 
   security_groups = [
-    data.terraform_remote_state.vpc.outputs.sg_http_8080_id # port 8080
+    data.terraform_remote_state.vpc.outputs.sg_http_80_id # port 80
   ]
 
   internal = false
@@ -72,7 +72,7 @@ resource "aws_alb" "api" {
 # ------------------------------------------------------------------------------
 resource "aws_lb_listener" "api" {
   load_balancer_arn = aws_alb.api.arn
-  port              = var.api_container_port
+  port              = 80
   protocol          = "HTTP"
 
   default_action {
