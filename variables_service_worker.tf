@@ -1,18 +1,6 @@
 # ------------------------------------------------------------------------------
 # Ethereum Indexer Worker
 # ------------------------------------------------------------------------------
-variable "worker_service_memory_alloc" {
-  type        = number
-  description = "The memory allocation for the entire service."
-  default     = 1024
-}
-
-variable "worker_service_cpu_alloc" {
-  type        = number
-  description = "The CPU allocation for the entire service."
-  default     = 512
-}
-
 variable "worker_instance_count" {
   type        = number
   description = "The number of instances to run."

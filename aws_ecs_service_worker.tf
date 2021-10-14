@@ -31,8 +31,8 @@ resource "aws_ecs_task_definition" "worker" {
   network_mode             = "awsvpc"
   execution_role_arn       = aws_iam_role.ecsTaskExecutionRole.arn
 
-  memory = var.worker_service_memory_alloc * var.worker_instance_count
-  cpu = var.worker_service_cpu_alloc * var.worker_instance_count
+  memory = var.worker_container_memory_alloc
+  cpu    = var.worker_container_cpu_alloc
 
   tags = local.tags
 
