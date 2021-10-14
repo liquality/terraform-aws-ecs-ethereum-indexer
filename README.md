@@ -23,7 +23,7 @@ Example of an RSK testnet configuration:
 
 ```
 module "indexer-rsk-testnet" {
-  source = "github.com/liquality/terraform-aws-ecs-ethereum-indexer.git?ref=tags/v0.0.4"
+  source = "github.com/liquality/terraform-aws-ecs-ethereum-indexer.git?ref=tags/v0.0.5"
 
   # The target environment
   env_alias  = "chainhub"
@@ -48,7 +48,13 @@ module "indexer-rsk-testnet" {
 
   # Worker settings
   worker_image_version          = "latest"
-  worker_environment_vars       = [{ name = "MAX_BLOCK_BATCH_SIZE", value = 10 }, { name = "MAX_TRANSACTION_BATCH_SIZE", value = 15 }]
+  worker_environment_vars = [
+    { name = "START_BLOCK", value = 1397234 },
+    { name = "MAX_BLOCK_BATCH_SIZE", value = 10 },
+    { name = "MAX_TRANSACTION_BATCH_SIZE", value = 15 },
+    { name = "REORG_GAP", value = 3 },
+    { name = "BLOCKTIME", value = 1000 }
+  ]
   worker_container_memory_alloc = 1024
   worker_container_cpu_alloc    = 512
 }

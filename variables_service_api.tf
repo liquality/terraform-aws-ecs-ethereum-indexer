@@ -1,18 +1,6 @@
 # ------------------------------------------------------------------------------
 # Ethereum Indexer API
 # ------------------------------------------------------------------------------
-variable "api_service_memory_alloc" {
-  type        = number
-  description = "The memory allocation for the entire service."
-  default     = 512
-}
-
-variable "api_service_cpu_alloc" {
-  type        = number
-  description = "The CPU allocation for the entire service."
-  default     = 256
-}
-
 variable "api_instance_count" {
   type        = number
   description = "The number of instances to run."
@@ -43,13 +31,13 @@ variable "api_image_version" {
 variable "api_container_memory_alloc" {
   type        = number
   description = "The memory allocation to designate for the container."
-  default     = 256
+  default     = 512
 }
 
 variable "api_container_cpu_alloc" {
   type        = number
   description = "The CPU allocation to designate for the container."
-  default     = 128
+  default     = 256
 }
 
 variable "api_is_essential" {

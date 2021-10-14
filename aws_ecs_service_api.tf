@@ -38,8 +38,8 @@ resource "aws_ecs_task_definition" "api" {
   network_mode             = "awsvpc"
   execution_role_arn       = aws_iam_role.ecsTaskExecutionRole.arn
 
-  memory = var.api_service_memory_alloc * var.api_instance_count
-  cpu    = var.api_service_cpu_alloc * var.api_instance_count
+  memory = var.api_container_memory_alloc
+  cpu    = var.api_container_cpu_alloc
 
   tags = local.tags
 
