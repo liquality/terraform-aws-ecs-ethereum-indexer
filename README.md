@@ -47,7 +47,7 @@ module "indexer-rsk-testnet" {
   api_instance_count         = 2
 
   # Worker settings
-  worker_image_version          = "latest"
+  worker_image_version = "latest"
   worker_environment_vars = [
     { name = "START_BLOCK", value = 1397234 },
     { name = "MAX_BLOCK_BATCH_SIZE", value = 10 },
