@@ -29,6 +29,8 @@ resource "aws_iam_role_policy_attachment" "ecsTaskExecutionRole_policy" {
 resource "aws_cloudwatch_log_group" "logs" {
   name = "/ecs/${local.cluster_name}"
 
+  retention_in_days = 3
+
   tags = local.tags
 }
 
