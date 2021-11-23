@@ -1,5 +1,5 @@
 locals {
-  cluster_name        = "chain-services-${var.chain_network_name}"
+  cluster_name        = "chain-indexers-${var.chain_network_name}"
   api_service_name    = "${var.chain_network_name}-indexer-api"
   worker_service_name = "${var.chain_network_name}-indexer-worker"
   api_task_name       = "${var.api_task_name}-${var.chain_network_name}"
