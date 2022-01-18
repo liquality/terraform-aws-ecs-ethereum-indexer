@@ -33,3 +33,18 @@ variable "mongo_db_password" {
   type        = string
   description = "The password for the MongoDB database."
 }
+
+# ------------------------------------------------------------------------------
+# SSL/TLS settings
+# ------------------------------------------------------------------------------
+variable "use_https" {
+  type        = bool
+  description = "Set to true to enable HTTPS on the front-end (load balancer) traffic."
+  default     = false
+}
+
+variable "https_certificate_arn" {
+  type        = string
+  description = "The ARN for the SSL/TLS certificate (required if use_https is set to true)."
+  default     = ""
+}

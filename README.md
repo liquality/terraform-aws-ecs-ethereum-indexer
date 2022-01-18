@@ -19,7 +19,7 @@ Terraform module for Liquality's blockchain indexer services (AWS ECS).
 
 ## Usage
 
-Example of an RSK testnet configuration:
+Example of an RSK testnet configuration (with HTTPS enabled):
 
 ```
 module "indexer-rsk-testnet" {
@@ -28,6 +28,10 @@ module "indexer-rsk-testnet" {
   # The target environment
   env_alias  = "chainhub"
   aws_region = "us-east-1"
+
+  # SSL/TLS settings
+  use_https             = true
+  https_certificate_arn = "arn:aws:acm:us-east-1:999777012345:certificate/11111111-2222-3333-5555-abcdef112358"
 
   # Chain settings
   chain_network_name     = "rsk-testnet"

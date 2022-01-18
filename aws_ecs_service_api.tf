@@ -48,9 +48,8 @@ resource "aws_ecs_task_definition" "api" {
   ]))
 }
 
-
 # ------------------------------------------------------------------------------
-# AWS route53 alias recored 
+# Route53 alias record
 # ------------------------------------------------------------------------------
 data "aws_route53_zone" "api" {
   name         = "api.liq-chainhub.net"
@@ -69,22 +68,17 @@ resource "aws_route53_record" "api" {
   }
 }
 
-
-
-
 # ------------------------------------------------------------------------------
 # Load Balancer
 # ------------------------------------------------------------------------------
-
-
-
 resource "aws_alb" "api" {
   name               = local.api_service_name
   load_balancer_type = "application"
   subnets            = data.terraform_remote_state.vpc.outputs.public_subnets
 
   security_groups = [
-    data.terraform_remote_state.vpc.outputs.sg_http_80_id # port 80
+    data.terraform_remote_state.vpc.outputs.sg_http_80_id,  # port 80
+    data.terraform_remote_state.vpc.outputs.sg_https_443_id # port 443
   ]
 
   internal = false
@@ -97,10 +91,27 @@ resource "aws_alb" "api" {
 # ------------------------------------------------------------------------------
 # Listener / Target Group
 # ------------------------------------------------------------------------------
-resource "aws_lb_listener" "api" {
+resource "aws_lb_listener" "http" {
+  count = var.use_https ? 0 : 1
+
   load_balancer_arn = aws_alb.api.arn
   port              = 80
   protocol          = "HTTP"
+
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.api.arn
+  }
+}
+
+resource "aws_lb_listener" "https" {
+  count = var.use_https ? 1 : 0
+
+  load_balancer_arn = aws_alb.api.arn
+  port              = 443
+  protocol          = "HTTPS"
+  ssl_policy        = "ELBSecurityPolicy-2016-08"
+  certificate_arn   = var.https_certificate_arn
 
   default_action {
     type             = "forward"
