@@ -1,4 +1,24 @@
 # ------------------------------------------------------------------------------
+# AWS route53 alias recored 
+# ------------------------------------------------------------------------------
+data "aws_route53_zone" "api" {
+  name         = "api.liq-chainhub.net"
+  private_zone = false
+}
+
+resource "aws_route53_record" "api" {
+  zone_id = data.aws_route53_zone.api.zone_id
+  name    = var.chain_network_name
+  type    = "A"
+
+  alias {
+    name                   = aws_alb.api.dns_name
+    zone_id                = aws_alb.api.zone_id
+    evaluate_target_health = true
+  }
+}
+
+# ------------------------------------------------------------------------------
 # ECS Service - Ethereum Indexer API
 # ------------------------------------------------------------------------------
 resource "aws_ecs_service" "api" {
