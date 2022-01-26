@@ -29,6 +29,10 @@ module "indexer-rsk-testnet" {
   env_alias  = "chainhub"
   aws_region = "us-east-1"
 
+  # DNS route53 settings
+  route53_zone_name   = "api.liq-chainhub.net"
+  route53_record_name = "rsk-testnet"
+
   # Chain settings
   chain_network_name     = "rsk-testnet"
   chain_network_endpoint = "https://public-node.testnet.rsk.co"
