@@ -5,8 +5,8 @@ resource "aws_ecs_cluster" "this" {
   name = local.cluster_name
 
   setting {
-    naname = "containerInsights"
-    value  = "enabled"
+    name  = "containerInsights"
+    value = "enabled"
   }
 
   tags = local.tags
