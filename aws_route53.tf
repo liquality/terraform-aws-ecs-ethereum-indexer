@@ -8,7 +8,7 @@ data "aws_route53_zone" "api" {
 
 resource "aws_route53_record" "api" {
   zone_id = data.aws_route53_zone.api.zone_id
-  name    = var.route53_record_name
+  name    = local.route53_record_name
   type    = "A"
 
   alias {
