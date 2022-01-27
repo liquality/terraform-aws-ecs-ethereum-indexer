@@ -30,8 +30,8 @@ module "indexer-rsk-testnet" {
   aws_region = "us-east-1"
 
   # DNS route53 settings
-  route53_zone_name   = "api.liq-chainhub.net"
-  route53_record_name = "rsk-testnet"
+  route53_zone_name          = "api.liq-chainhub.net"
+  route53_record_name_prefix = "dev-"
 
   # Chain settings
   chain_network_name     = "rsk-testnet"
