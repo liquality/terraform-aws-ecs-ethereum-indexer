@@ -109,7 +109,7 @@ resource "aws_lb_listener" "api" {
 }
 
 resource "aws_lb_target_group" "api" {
-  name        = local.api_task_name
+  name        = "chain-${local.api_service_name}"
   port        = var.api_container_port
   protocol    = "HTTP"
   vpc_id      = data.terraform_remote_state.vpc.outputs.vpc_id
