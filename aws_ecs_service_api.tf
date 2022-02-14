@@ -60,7 +60,8 @@ resource "aws_alb" "api" {
     data.terraform_remote_state.vpc.outputs.sg_http_80_id # port 80
   ]
 
-  internal = false
+  internal     = false
+  idle_timeout = 180
 
   # enable_cross_zone_load_balancing = "true"
 
